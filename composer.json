@@ -1,0 +1,15 @@
+{
+    "name": "youcode/myownmvc",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "younes",
+            "email": "benjdidawiyad@gmail.com"
+        }
+    ],
+    "require": {}
+}
