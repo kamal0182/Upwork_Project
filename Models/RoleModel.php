@@ -1,7 +1,7 @@
 <?php 
 namespace app\Models;
 
-class RoleModel extends Model
+class RoleModel 
 {
     private int $id;
     private string $name;

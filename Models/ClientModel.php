@@ -63,14 +63,7 @@ class ClientModel
     {
       $this->rating = $value;
     }
-    // public function getProjects() 
-    // {
-    //   return $this->projects;
-    // }
-    // public function setProjects($value) 
-    // {
-    //   $this->projects = $value;
-    // }
+    
     public function getOffres(){
         return $this->Offres;
     }

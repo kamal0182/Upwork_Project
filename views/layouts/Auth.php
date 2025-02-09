@@ -74,7 +74,7 @@
     
 </head>
 <body>
-    <h1>Contact :</h1>
+    
 {{Content}}
 </body>
 </html>
