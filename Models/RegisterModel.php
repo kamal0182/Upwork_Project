@@ -10,7 +10,8 @@ class RegisterModel extends Model
     private $email ;
     private $password ;
     private $confirm_password;
-    public function validate(){
+    public function validate()
+    {
         
     }
    

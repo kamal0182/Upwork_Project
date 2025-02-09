@@ -11,7 +11,6 @@
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
 .navbar {
     display: flex;
     justify-content: space-between;

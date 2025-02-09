@@ -9,7 +9,6 @@ namespace app\Core;
         if($position === false ){
             return $path ;
         }
-       
         return substr($path , 0,$position);
     }
     public function getMethod()
@@ -18,14 +17,11 @@ namespace app\Core;
     }
     public function isPost()
     {
-        echo "post";
         return $this->getMethod() == "post";
     }
     public function isGet()
     {
-        
         return $this->getMethod() == "get";
-
     }
     public function getBody(){
         $body = [];
@@ -37,7 +33,6 @@ namespace app\Core;
         }
         if($this->getMethod()  == "post")
         {
-            // var_dump($_POST);
             foreach($_POST as $key=>$value ){
              $body[$key] = filter_input(INPUT_POST , $key , FILTER_SANITIZE_SPECIAL_CHARS);
             }
