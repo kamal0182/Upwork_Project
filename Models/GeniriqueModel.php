@@ -25,7 +25,7 @@ abstract class GeniriqueModel{
         $stmt->execute();
         return  Database::getConnection()->lastInsertId();
     }
-    public function delete(){
+    public function delete($id){
 
     }
     // public function update($id){
