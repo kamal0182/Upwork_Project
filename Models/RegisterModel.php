@@ -10,7 +10,8 @@ class RegisterModel extends Model
     public string  $email = '' ;
     public string  $password = '' ;
     public string  $confirm_password = '';
-    public string $photo = ''; 
+    public string $photo = '';
+    public string $phone = '';
     
     public function register()
     {
@@ -26,10 +27,7 @@ class RegisterModel extends Model
             "photo" => [ self::RULE_REQUIRED ]
         ];
      }
-     public function get($attribute)
-     {
-        return $this->{$attribute};
-     }
+     
    
 }
 

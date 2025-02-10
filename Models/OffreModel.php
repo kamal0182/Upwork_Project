@@ -1,12 +1,12 @@
 <?php 
 namespace app\Models;
-class OffreModel
+class OffreModel extends Model
 {
     private  int  $id;
-    private  string $title;
-    private  string $description;
-    private string $budjet;
-    private string $duree;
+    public  string $title = '';
+    public  string $description = '';
+    public string $budjet = '0';
+    public string $duree = '0' ;
     private ClientModel $clientmodal;
     // public function ($budjet,$duree,$description, $title,$clientmodal)
     // {
@@ -21,6 +21,14 @@ class OffreModel
             $this->duree = $arguments[3];
             $this->clientmodal = $arguments[4];
         }
+    }
+    public function rules(): array {
+      return [
+        "title" => [self::RULE_REQUIRED],
+        'description'=>[self::RULE_REQUIRED],
+        'budget' =>[self::RULE_REQUIRED],
+        'durre' => [self::RULE_REQUIRED]
+      ];
     }
     public function getId()
     {

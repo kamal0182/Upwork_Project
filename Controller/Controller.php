@@ -10,6 +10,7 @@ class Controller {
     }
     public   function render($View , $params= [])
     {
+       var_dump($View);
         return  Application::$app->router->renderView($View,$params);
     }
   

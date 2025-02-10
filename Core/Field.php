@@ -21,9 +21,9 @@ class Field
         <label>%s</label>
         <input type="%s" name="%s" value="%s" class="form-control %s"
         </div>
-        <div class="">
+        <div class="invalid-feedback">
         %s
-        </div class="invalid-feedback">
+        </div >
         ',
         $this->attribute,
         $this->type,
@@ -36,6 +36,11 @@ class Field
     public function typePassword()
     {
         $this->type = self::TYPE_PASSWORD;
+        return $this;
+    }
+    public function typeNumber()
+    {
+        $this->type = self::TYPE_NUMBER;
         return $this;
     }
 }

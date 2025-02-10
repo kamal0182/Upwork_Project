@@ -2,10 +2,7 @@
 namespace app\Models;
 class FreelancerModel
 {
-    private int $id ; 
-    private string $firstname;
-    private string $lastname;
-    private string $email;
+    private UserModel $user;
     private float $rating;
     private array $projects;
     private RoleModel $role ;

@@ -1,6 +1,7 @@
 <?php
 namespace app\Models;
 
+use app\Core\Config\Database;
 use MessageFormatter;
 use PDO;
 
@@ -12,6 +13,7 @@ abstract class Model
     public const RULE_MIN = "min";
     public const RULE_MATCH = "match";
     public array  $errors  = []  ; 
+   
     public function loadData(array $data){
         foreach($data as $key=>$value)
         {
@@ -21,15 +23,10 @@ abstract class Model
     abstract public function rules(): array ; 
     public function validate()
     {
-        
         foreach($this->rules() as $attribute => $rules){
-            
-
             
             $value = $this->{$attribute};
             foreach($rules as $rule){
-               
-           
                 $rulename = $rule;
                 if(!is_string($rulename))
                 {
@@ -76,6 +73,8 @@ abstract class Model
              self::RULE_MAX => 'Min length of this field must be {max}',
         ];
     }
+   
+    
     public function hasError($attribute)
     {
         return $this->errors[$attribute] ?? false ;
@@ -88,6 +87,8 @@ abstract class Model
      {
         return $this->{$attribute};
      }
+   
+
 }
 
 

@@ -5,35 +5,46 @@ use app\Core\Application;
 use app\Core\Request;
 use app\Models\LoginModel;
 use app\Models\RegisterModel as ModelsRegisterModel;
-
+use app\Models\UserModel;
 
 class AuthController extends Controller
 {
-    
+    public  UserModel $user;
+    public function __construct()
+    {
+        $this->user = new UserModel;
+    }
     public function register (Request $request){
-    //    echo "ascasc";
        $registerModel = new ModelsRegisterModel;
        if($request->isPost()){
 
         $registerModel->loadData($request->getBody());
         if($registerModel->validate() && $registerModel->register()){
-            return "Success";
-        }
-       }
+
+             $this->user->createInstanceWithoutId($registerModel->firstname,$registerModel->lastname, $registerModel->email ,$registerModel->password , $registerModel->photo , $registerModel->phone);
+              $this->user->create();
+             }
+            }
         $this->setLayout("Auth"); 
         return $this->render("register",[
-            'model' => $registerModel]);    
-    }
-    public function login (Request $request){
+            'model' => $registerModel]);
+        
+}
+    public function login (Request $request)
+    {
         $loginmodel = new LoginModel() ;
         if($request->isPost()){
          $loginmodel->loadData($request->getBody());
-         if($loginmodel->validate() && $loginmodel->login()){
-             return "Success";
-         }
+         if($loginmodel->validate() && $loginmodel->login())
+        {
+          $this->user->createInstanceWithEmailAndPassword($loginmodel->email ,$loginmodel->password);
         }
+    }
+       
          $this->setLayout("Auth"); 
-         return $this->render("Login");  
+         return $this->render("login",[
+            'model' => $loginmodel
+         ]);  
        
     }    
    
