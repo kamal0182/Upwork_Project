@@ -60,7 +60,7 @@ class Router {
             ob_start();
             include_once application::$root_dir."/views/$View.php";
            return  ob_get_clean() ;
-    }
+    } 
 }
 
 ?>
