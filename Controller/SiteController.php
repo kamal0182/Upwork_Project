@@ -23,9 +23,7 @@ class SiteController extends Controller
     public   function ClientDashboard()
     {
         $offremodel = new OffreModel;
-        return  $this->render('Client',[
-            'model' => $offremodel
-        ]);
+        return  $this->render('Client');
     }
     public function test(){
         $t = new TestTest;

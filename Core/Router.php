@@ -39,7 +39,7 @@ class Router {
     }
     public function renderView($View,$params=[])
     {
-        var_dump($params);
+        
       $viewcontent = $this->changeContente($View,$params); 
       $layoutcontent = $this->layoutContent();
       return str_replace("{{Content}}",$viewcontent ,$layoutcontent);

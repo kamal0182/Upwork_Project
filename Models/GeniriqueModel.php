@@ -15,16 +15,7 @@ abstract class GeniriqueModel{
         return $tabalename ;
  
      }
-    public function create(){
-        $keys = array_keys($this->columns());
-        $joincloumn = implode(",",$keys);
-        $arrValues = array_values($this->columns());
-        $joincloumn1 = implode("','",$arrValues);
-        $sql = "INSERT INTO {$this->matchclassswithdatabase()} ( {$joincloumn}) values ('{$joincloumn1}')" ;
-        $stmt = Database::getConnection()->prepare($sql);
-        $stmt->execute();
-        return  Database::getConnection()->lastInsertId();
-    }
+   
     public function delete($id){
 
     }

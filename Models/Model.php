@@ -17,6 +17,7 @@ abstract class Model
     public function loadData(array $data){
         foreach($data as $key=>$value)
         {
+         
             $this->{$key} = $value ;
         }
     }
@@ -24,7 +25,7 @@ abstract class Model
     public function validate()
     {
         foreach($this->rules() as $attribute => $rules){
-            
+       
             $value = $this->{$attribute};
             foreach($rules as $rule){
                 $rulename = $rule;
@@ -62,7 +63,7 @@ abstract class Model
             $message = str_replace("{{$key}}", $value,$message);
         }
     }
-        $this->errors[$attribute][] =  $message ;   
+        $this->errors[$attribute][] =  $message ;
     }
     public function errorMessage(){
         return [

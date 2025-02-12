@@ -1,35 +1,39 @@
 <?php 
 namespace app\Models;
+
+use app\Core\Config\Database;
+
 class OffreModel extends Model
 {
     private  int  $id;
-    public  string $title = '';
-    public  string $description = '';
-    public string $budjet = '0';
-    public string $duree = '0' ;
+    public  string $titre ;
+    public  string $description ;
+    public string $budget ;
+    public string  $duration ;
+    public string $status = "non-valide";
+    public string $photo ;
     private ClientModel $clientmodal;
-    // public function ($budjet,$duree,$description, $title,$clientmodal)
-    // {
-        
-    // }
+    private FreelancerModel $freelancer;
+    private ProjectModel $project;
     public function __call($name, $arguments)
     {
         if($name == "constructer"){
-            $this->title = $arguments[0];
+            $this->titre = $arguments[0];
             $this->description = $arguments[1];
-            $this->budjet = $arguments[2];
-            $this->duree = $arguments[3];
+            $this->budget = $arguments[2];
+            $this->duration = $arguments[3];
             $this->clientmodal = $arguments[4];
         }
     }
     public function rules(): array {
       return [
-        "title" => [self::RULE_REQUIRED],
+        "titre" => [self::RULE_REQUIRED],
         'description'=>[self::RULE_REQUIRED],
         'budget' =>[self::RULE_REQUIRED],
-        'durre' => [self::RULE_REQUIRED]
+        'duration' => [self::RULE_REQUIRED]
       ];
     }
+    
     public function getId()
     {
       return $this->id;
@@ -38,10 +42,10 @@ class OffreModel extends Model
       $this->id = $value;
     }
     public function getTitle() {
-      return $this->title;
+      return $this->titre;
     }
     public function setTitle($value) {
-      $this->title = $value;
+      $this->titre = $value;
     }
 
     public function getDescription() {
@@ -52,17 +56,17 @@ class OffreModel extends Model
     }
 
     public function getBudjet() {
-      return $this->budjet;
+      return $this->budget;
     }
     public function setBudjet($value) {
-      $this->budjet = $value;
+      $this->budget = $value;
     }
 
     public function getDuree() {
-      return $this->duree;
+      return $this->duration;
     }
     public function setDuree($value) {
-      $this->duree = $value;
+      $this->duration = $value;
     }
 
     public function getClient() {
@@ -71,8 +75,16 @@ class OffreModel extends Model
     public function setClientmodal(ClientModel $clientmodal) {
       $this->clientmodal = $clientmodal;
     }
-    public function Create()
-    {
-
+      public function create(){
+        $sql = "INSERT INTO offres (titre  , description  , budget  , duration, status , client)  values ('{$this->titre}' , '{$this->description}', '{$this->budget}','{$this->duration}','{$this->status}' ,'{$this->getclient()->getId()}')" ;
+        $stmt = Database::getConnection()->prepare($sql);
+        $stmt->execute();
+        return  Database::getConnection()->lastInsertId();
+    }
+    public function findByOne($id){
+      $sql  = "SELECT * FROM offres WHERE id = " .$id ;
+      $stmt = Database::getConnection()->prepare($sql);
+      $stmt->execute();
+      // return 
     }
 }

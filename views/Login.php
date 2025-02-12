@@ -10,6 +10,6 @@ use app\Core\Form;
    echo  $form->field($model,"email");
    echo  $form->field($model,"password")->typePassword();
     ?>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary"><a href="/contact">Login</a></button>
 <?php Form::end(); ?>
 </div>

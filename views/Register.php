@@ -26,13 +26,13 @@
                   ?>
                   </div>
                 </div>
-                <?php
+              <?php
                 echo  $form->field($model,'email');
                 echo  $form->field($model,'password')->typePassword();  
                 echo  $form->field($model,'confirm_password')->typePassword();
                 echo  $form->field($model,'photo');
                 echo $form->field($model,'phone');
-                  ?>
+              ?>
                   <div class="d-flex justify-content-center mx-4 mt-3  mb-3 mb-lg-4">
                     <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Register</button>
                   </div>

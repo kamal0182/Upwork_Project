@@ -1,5 +1,6 @@
 <?php
- namespace app\Controller;
+
+namespace app\Controller;
 
 use app\Core\Application;
 use app\Core\Request;
@@ -14,38 +15,44 @@ class AuthController extends Controller
     {
         $this->user = new UserModel;
     }
-    public function register (Request $request){
-       $registerModel = new ModelsRegisterModel;
-       if($request->isPost()){
-
-        $registerModel->loadData($request->getBody());
-        if($registerModel->validate() && $registerModel->register()){
-
-             $this->user->createInstanceWithoutId($registerModel->firstname,$registerModel->lastname, $registerModel->email ,$registerModel->password , $registerModel->photo , $registerModel->phone);
-              $this->user->create();
-             }
-            }
-        $this->setLayout("Auth"); 
-        return $this->render("register",[
-            'model' => $registerModel]);
-        
-}
-    public function login (Request $request)
+    public function register(Request $request)
     {
-        $loginmodel = new LoginModel() ;
-        if($request->isPost()){
-         $loginmodel->loadData($request->getBody());
-         if($loginmodel->validate() && $loginmodel->login())
+        $registerModel = new ModelsRegisterModel;
+        if ($request->isPost()) 
         {
-          $this->user->createInstanceWithEmailAndPassword($loginmodel->email ,$loginmodel->password);
+
+            $registerModel->loadData($request->getBody());
+            if ($registerModel->validate() && $registerModel->register()) 
+            {
+                echo "Ascasc";
+                $this->user->createInstanceWithoutId($registerModel->firstname, $registerModel->lastname, $registerModel->email, $registerModel->password, $registerModel->photo, $registerModel->phone);
+                
+              
+                $this->user->create();
+            }
         }
+        $this->setLayout("Auth");
+        return $this->render("register", [
+            'model' => $registerModel
+        ]);
     }
-       
-         $this->setLayout("Auth"); 
-         return $this->render("login",[
+    public function login(Request $request)
+    {
+        $loginmodel = new LoginModel();
+        if ($request->isPost()) {
+            $loginmodel->loadData($request->getBody());
+            if ($loginmodel->validate() && $loginmodel->login()) {
+                $this->user->createInstanceWithEmailAndPassword($loginmodel->email, $loginmodel->password);
+                $this->user->findByEmailAndPassword();
+                $this->user = $this->user->findByEmailAndPassword();
+                $_SESSION['user'] = $this->user;
+                return $this->render('Client');
+              
+            }
+        }
+        $this->setLayout("Auth");
+        return $this->render("login", [
             'model' => $loginmodel
-         ]);  
-       
-    }    
-   
+        ]);
+    }
 }

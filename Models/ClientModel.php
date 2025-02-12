@@ -1,5 +1,9 @@
 <?php 
 namespace app\Models;
+
+use app\Core\Config\Database;
+use PDO;
+
 class ClientModel
 {
     private int $id;
@@ -7,17 +11,19 @@ class ClientModel
     private string $lastname;
     private string $email;
     private float  $rating;
+    // private UserModel $user ;
     private array $Offres;
     private RoleModel $role;
     private PortfolioModel $portfolio;
     private string $photo;
     public function __construct(UserModel $user)
     {
+      $this->id =  $user->getId();
         $this->firstname   = $user->getFirstName();
         $this->lastname  = $user->getLastname();
         $this->email = $user->getEmail();
         $this->photo = $user->getPhoto();
-        $this->role = $user->getRole();
+        // $this->role = $user->getRole();
     } 
     public function getId() 
     {
@@ -96,5 +102,11 @@ class ClientModel
     public function  createAnOffre()
     {
         // $offre->create();
+    }
+    public function findByOne($id){
+      $sql = 'SELECT  * from users WHERE id =  ' .$id ."'";
+      $stmt = Database::getConnection()->prepare($sql);
+      $stmt->execute();
+      return $stmt->fetchObject(ClientModel::class);
     }
 }
