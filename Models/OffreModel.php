@@ -2,6 +2,7 @@
 namespace app\Models;
 
 use app\Core\Config\Database;
+use PDO;
 
 class OffreModel extends Model
 {
@@ -11,9 +12,9 @@ class OffreModel extends Model
     public string $budget ;
     public string  $duration ;
     public string $status = "non-valide";
-    public string $photo ;
+    public  $photo ;
     private ClientModel $clientmodal;
-    private FreelancerModel $freelancer;
+    private  $freelancer;
     private ProjectModel $project;
     public function __call($name, $arguments)
     {
@@ -80,6 +81,12 @@ class OffreModel extends Model
         $stmt = Database::getConnection()->prepare($sql);
         $stmt->execute();
         return  Database::getConnection()->lastInsertId();
+    }
+    public function findAll(){
+      $sql = "SELECT * FROM offres " ;
+      $stmt = Database::getConnection()->prepare($sql);
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_CLASS,OffreModel::class);
     }
     public function findByOne($id){
       $sql  = "SELECT * FROM offres WHERE id = " .$id ;

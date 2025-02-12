@@ -10,7 +10,7 @@
 </head>
 <body class="bg-gray-50">
     <!-- Sidebar -->
-    <div class="fixed inset-y-0 left-0 w-64 bg-blue-600 text-white transition-transform duration-300 transform">
+    <!-- <div class="fixed inset-y-0 left-0 w-64 bg-blue-600 text-white transition-transform duration-300 transform">
         <div class="p-6">
             <h1 class="text-2xl font-bold mb-8">Dashboard Admin</h1>
             <nav>
@@ -91,7 +91,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Users Table -->
         <div class="bg-white rounded-xl shadow-md overflow-hidden">
@@ -135,9 +135,83 @@
             </div>
         </div>
     </div>
+   
+
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Available Job Offers</h2>
+
+        <div class="row">
+            <!-- Job Offer 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Job Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Web Development Project</h5>
+                        <p class="card-text">Build a custom website for a small business. Knowledge of HTML, CSS, and JavaScript required.</p>
+                        <p class="card-text"><strong>Budget:</strong> $500 - $800</p>
+                        <a href="#" class="btn btn-primary">Apply</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Offer 2 -->
+            <div class="col-md-4 mb-4">
+                
+                <div class="card">
+                    
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Job Image">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">Create a logo, business card, and brand identity for a new startup.</p>
+                        <p class="card-text"><strong>Budget:</strong> $300 - $500</p>
+                        <a href="#" class="btn btn-primary">Apply</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Offer 3 -->
+        <?php
+
+use app\Controller\ClientController;
+use app\Core\OffresField;
+
+        $client = new ClientController ;
+        $field = new OffresField;
+        foreach($client->ShowAllMyOffres() as $offre ){
+          echo   $field->Field($offre);
+        }; ?>
+
+            
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+                <li class="page-item active">
+                    <span class="page-link">1</span>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+
+
     <!-- button -->
     
-    <h1 >rdtfghij.k/l</h1>
+    
     <!-- modal -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">

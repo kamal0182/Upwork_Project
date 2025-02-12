@@ -12,6 +12,9 @@ class Controller {
     {
         return  Application::$app->router->renderView($View,$params);
     }
+    public function checkValue($data){
+        return $data ?? 'Create Your First Offre';
+    }
   
 }
 

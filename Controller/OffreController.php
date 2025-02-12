@@ -14,20 +14,22 @@ class OffreController  extends Controller
         $offremodel = new OffreModel() ;
         
         $this->client = new ClientModel($_SESSION['user']);
-
+        
         $offremodel->setClientmodal($this->client);
         if($request->isPost()){ 
             $offremodel->loadData($request->getBody());
             if($offremodel->validate()){
                 $offremodel->create();
-                
             }
-            var_dump($offremodel);
+            
             return  $this->render('Client',[
                 'model' => $offremodel
             ]);
         }
     // return  $this->render('Client');
+    }
+    public function ShowOffres(){
+        
     }
 
 }

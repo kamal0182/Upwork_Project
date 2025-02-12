@@ -5,6 +5,7 @@ namespace app\Controller;
 use app\Core\Application;
 use app\Core\Request;
 use app\Models\LoginModel;
+use app\Models\OffreModel;
 use app\Models\RegisterModel as ModelsRegisterModel;
 use app\Models\UserModel;
 
@@ -45,8 +46,11 @@ class AuthController extends Controller
                 $this->user->createInstanceWithEmailAndPassword($loginmodel->email, $loginmodel->password);
                 $this->user->findByEmailAndPassword();
                 $this->user = $this->user->findByEmailAndPassword();
+                $offre = new OffreModel;
                 $_SESSION['user'] = $this->user;
-                return $this->render('Client');
+                return $this->render('Client',[
+                    
+                ]);
               
             }
         }
