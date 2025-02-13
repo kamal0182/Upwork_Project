@@ -18,7 +18,7 @@
                     <i class="fas fa-users mr-3"></i>
                     Utilisateurs
                 </a>
-                <a href="offres.php" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700">
+                <a href="/offres" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700">
                     <i class="fas fa-chart-bar mr-3"></i>
                     offres
                 </a>
