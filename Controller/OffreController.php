@@ -17,5 +17,8 @@ class OffreController  extends Controller
     ]
     );
     }
+    public function viewsOffres(){
+        return $this->render('offres');
 
+    }
 }
