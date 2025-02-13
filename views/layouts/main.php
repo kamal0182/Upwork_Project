@@ -3,88 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <style>
-        body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 1rem;
-}
-
-.navbar-brand {
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.navbar-menu {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.navbar-item {
-    margin-left: 1rem;
-}
-
-.navbar-item a {
-    color: #fff;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s;
-}
-
-.navbar-item a:hover {
-    background-color: #575757;
-    border-radius: 4px;
-}
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar-menu {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar-item {
-        margin: 0;
-        width: 100%;
-    }
-
-    .navbar-item a {
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-}
-    </style>
-    
+    <title>Dashboard Admin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-<nav  class="navbar">
-       <ul style="color:white;  " class="navbar-menu" >
-        <li  class="navbar-item"><a href="/register">Register</a></li>
-        <li  class="navbar-item" style="margin-left:10px ;  " ><a href="/Login">Login</a></li>
-       </ul>
-        <ul class="navbar-menu">
-            <li class="navbar-item"><a href="/">Home</a></li>
-            <li class="navbar-item"><a href="#about">About</a></li>
-            <li class="navbar-item"><a href="#services">Services</a></li>
-            <li class="navbar-item"><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+        <div class="fixed inset-y-0 left-0 w-64 bg-blue-600 text-white transition-transform duration-300 transform">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold mb-8">Dashboard Admin</h1>
+                <nav>
+                    <a href="#" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700 bg-blue-700">
+                        <i class="fas fa-users mr-3"></i>
+                        Utilisateurs
+                    </a>
+                    <a href="/offres" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700">
+                        <i class="fas fa-chart-bar mr-3"></i>
+                        offres
+                    </a>
+                    <a href="#" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700">
+                        <i class="fas fa-cog mr-3"></i>
+                        Paramètres
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 p-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-blue-100 mr-4">
+                        <i class="fas fa-users text-blue-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-500 text-sm">Total Utilisateurs</h3>
+                        <p class="text-2xl font-bold" id="total-users">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 mr-4">
+                        <i class="fas fa-star text-green-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-500 text-sm">Rating Moyen</h3>
+                        <p class="text-2xl font-bold" id="avg-rating">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-purple-500">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 mr-4">
+                        <i class="fas fa-user-plus text-purple-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-gray-500 text-sm">Nouveaux Utilisateurs</h3>
+                        <p class="text-2xl font-bold" id="new-users">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 {{Content}}
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>

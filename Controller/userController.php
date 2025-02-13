@@ -30,4 +30,3 @@ declare(strict_types=1);
         echo json_encode(['message' => 'user deleted successfully']);
         exit();
     }
-    

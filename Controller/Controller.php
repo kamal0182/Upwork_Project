@@ -10,6 +10,10 @@ class Controller {
     }
     public   function render($View , $params= [])
     {
+<<<<<<< HEAD
+=======
+    //    var_dump($View);
+>>>>>>> ff45fba1327a113e160bb708362fdadc15780a3a
         return  Application::$app->router->renderView($View,$params);
     }
     public function checkValue($data){

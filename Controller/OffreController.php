@@ -48,5 +48,8 @@ class OffreController  extends Controller
         $this->offremodel->delete();
         header("Location:/contact");
     }
+    public function viewsOffres(){
+        return $this->render('offres');
 
+    }
 }

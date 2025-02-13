@@ -40,6 +40,10 @@ class Router {
     }
     public function renderView($View,$params=[])
     {
+<<<<<<< HEAD
+=======
+        // var_dump($params);
+>>>>>>> ff45fba1327a113e160bb708362fdadc15780a3a
       $viewcontent = $this->changeContente($View,$params); 
       $layoutcontent = $this->layoutContent();
       return str_replace("{{Content}}",$viewcontent ,$layoutcontent);
@@ -59,7 +63,7 @@ class Router {
             ob_start();
             include_once application::$root_dir."/views/$View.php";
            return  ob_get_clean() ;
-    }
+    } 
 }
 
 ?>

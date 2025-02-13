@@ -10,30 +10,30 @@
 </head>
 <body class="bg-gray-50">
     <!-- Sidebar -->
-    <div class="fixed inset-y-0 left-0 w-64 bg-blue-600 text-white transition-transform duration-300 transform">
-        <div class="p-6">
-            <h1 class="text-2xl font-bold mb-8">Dashboard Admin</h1>
-            <nav>
-                <a href="#" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700 bg-blue-700">
-                    <i class="fas fa-users mr-3"></i>
-                    Utilisateurs
-                </a>
-                <a href="offres.php" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700">
-                    <i class="fas fa-chart-bar mr-3"></i>
-                    offres
-                </a>
-                <a href="#" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700">
-                    <i class="fas fa-cog mr-3"></i>
-                    Paramètres
-                </a>
-            </nav>
-        </div>
-    </div>
+        <!-- <div class="fixed inset-y-0 left-0 w-64 bg-blue-600 text-white transition-transform duration-300 transform">
+            <div class="p-6">
+                <h1 class="text-2xl font-bold mb-8">Dashboard Admin</h1>
+                <nav>
+                    <a href="#" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700 bg-blue-700">
+                        <i class="fas fa-users mr-3"></i>
+                        Utilisateurs
+                    </a>
+                    <a href="/offres" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700">
+                        <i class="fas fa-chart-bar mr-3"></i>
+                        offres
+                    </a>
+                    <a href="#" class="flex items-center p-3 mb-3 rounded hover:bg-blue-700">
+                        <i class="fas fa-cog mr-3"></i>
+                        Paramètres
+                    </a>
+                </nav>
+            </div>
+        </div> -->
 
     <!-- Main Content -->
     <div class="ml-64 p-8">
         <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-500">
                 <div class="flex items-center">
                     <div class="p-3 rounded-full bg-blue-100 mr-4">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Search & Filters -->
         <div class="bg-white rounded-xl shadow-md p-6 mb-8">
