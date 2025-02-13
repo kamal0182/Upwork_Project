@@ -13,7 +13,7 @@ class OffresField
                         <p class="card-text"><strong>Budget :</strong> $%s </p>
                         <p class="card-text"><strong>Durre : </strong>%s day</p>
                         <a href="#" class="btn btn-primary">Apply</a>
-                        <button onclick="showUpdateForm(%n,%s,%s,%s,%s)" ></button>
+                        
                        <form>
                        <input name="id" value="%s" type="hidden">
                        <button  type="submit" name="submit" class=" mt-2 btn btn-primary">Delete</button>
@@ -26,7 +26,10 @@ class OffresField
         $offre->getDescription(),
         $offre->getBudjet(),
         $offre->getDuree(),
-        $offre->getId(),$offre->getTitle(), $offre->getDescription(),$offre->getBudjet(),
         $offre->getId());
+    }
+    public static  function showNonValideTables()
+    {
+        
     }
 }

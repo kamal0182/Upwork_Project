@@ -39,8 +39,9 @@ class OffreController  extends Controller
         
     // return  $this->render('Client');
     }
-    public function ShowOffres(){
-        
+    public function ShowNonValideForms()
+    {
+        $this->offremodel->showNonValidOffre();
     }
     public function DeleteOffre($id){   
         $this->offremodel->createInstanceWithId($id);

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 require_once '../Core/database.php';
 
-class User {
+class offre {
     private ?int $id;
     private string $title;
     private string $durée;
@@ -41,14 +41,12 @@ class User {
     public function setPrix(string $prix): void { $this->prix = $prix; }
     public function setMethodeDePaiment(?float $methodeDePaiment): void { $this->methodeDePaiment = $methodeDePaiment; }
     public function setStatus(string $status): void { $this->status = $status; }
-
     // Find by ID
     public static function findById(int $id): ?User {
         $pdo = Database::getInstance()->getConnection();
         $stmt = $pdo->prepare("SELECT * FROM offre WHERE id = ?");
         $stmt->execute([$id]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
         return $user ? new User(
             title: $user['title'],
             durée: $user['durée'],
@@ -103,21 +101,15 @@ class User {
             status: $user['status'],
             id: $user['id']
         ), $offre);
-    }
-
     
     public function validate(): void {
         $this->status = 'valide';
         $this->updateStatus();
     }
-
-    
     public function invalidate(): void {
         $this->status = 'non valide';
         $this->updateStatus();
     }
-
-    
     private function updateStatus(): void {
         $pdo = Database::getInstance()->getConnection();
         $stmt = $pdo->prepare("UPDATE offre SET status = ? WHERE id = ?");

@@ -102,4 +102,12 @@ class OffreModel extends Model
       $stmt = Database::getConnection()->prepare($sql);
       $stmt->execute();
     }
+    public function showNonValidOffre()
+    {
+      $sql = "SELECT * FROM offres  where status = 'non-valide'; " ;
+      $stmt = Database::getConnection()->prepare($sql);
+      $stmt->execute();
+      return $stmt->fetchAll(PDO::FETCH_CLASS,OffreModel::class);
+
+    }
 }
