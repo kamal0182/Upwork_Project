@@ -25,6 +25,9 @@ class OffreModel extends Model
             $this->duration = $arguments[3];
             $this->clientmodal = $arguments[4];
         }
+        if($name== "createInstanceWithId"){
+          $this->id = $arguments[0];
+        }
     }
     public function rules(): array {
       return [
@@ -83,7 +86,7 @@ class OffreModel extends Model
         return  Database::getConnection()->lastInsertId();
     }
     public function findAll(){
-      $sql = "SELECT * FROM offres " ;
+      $sql = "SELECT * FROM offres  where  client = " .$this->getClient()->getId();
       $stmt = Database::getConnection()->prepare($sql);
       $stmt->execute();
       return $stmt->fetchAll(PDO::FETCH_CLASS,OffreModel::class);
@@ -92,6 +95,11 @@ class OffreModel extends Model
       $sql  = "SELECT * FROM offres WHERE id = " .$id ;
       $stmt = Database::getConnection()->prepare($sql);
       $stmt->execute();
-      // return 
+    }
+    public function delete(){
+      $sql  = "delete   FROM offres WHERE id = " .$this->id ;
+      echo $sql ;
+      $stmt = Database::getConnection()->prepare($sql);
+      $stmt->execute();
     }
 }

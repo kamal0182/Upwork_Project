@@ -9,6 +9,12 @@ use app\Models\OffreModel;
 class OffreController  extends Controller
 { 
     public ClientModel $client;
+    public OffreModel $offremodel;
+    public function __construct( ) {
+        $this->offremodel = new OffreModel;
+     
+        
+    }
     public function create(Request $request)
     {
         $offremodel = new OffreModel() ;
@@ -20,16 +26,26 @@ class OffreController  extends Controller
             $offremodel->loadData($request->getBody());
             if($offremodel->validate()){
                 $offremodel->create();
+                // $request->getBody() = [];
+                header("Location:/contact");
+                // return  $this->render('Client',[
+                //     'model' => $offremodel
+                // 
             }
-            
             return  $this->render('Client',[
                 'model' => $offremodel
             ]);
         }
+        
     // return  $this->render('Client');
     }
     public function ShowOffres(){
         
+    }
+    public function DeleteOffre($id){   
+        $this->offremodel->createInstanceWithId($id);
+        $this->offremodel->delete();
+        header("Location:/contact");
     }
 
 }

@@ -139,50 +139,21 @@
 
     <div class="container my-5">
         <h2 class="text-center mb-4">Available Job Offers</h2>
-
         <div class="row">
-            <!-- Job Offer 1 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Job Image">
-                    <div class="card-body">
-                        <h5 class="card-title">Web Development Project</h5>
-                        <p class="card-text">Build a custom website for a small business. Knowledge of HTML, CSS, and JavaScript required.</p>
-                        <p class="card-text"><strong>Budget:</strong> $500 - $800</p>
-                        <a href="#" class="btn btn-primary">Apply</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job Offer 2 -->
-            <div class="col-md-4 mb-4">
-                
-                <div class="card">
-                    
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Job Image">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">Create a logo, business card, and brand identity for a new startup.</p>
-                        <p class="card-text"><strong>Budget:</strong> $300 - $500</p>
-                        <a href="#" class="btn btn-primary">Apply</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job Offer 3 -->
         <?php
-
 use app\Controller\ClientController;
+use app\Controller\OffreController;
 use app\Core\OffresField;
-
+use app\Models\OffreModel;
         $client = new ClientController ;
         $field = new OffresField;
         foreach($client->ShowAllMyOffres() as $offre ){
-          echo   $field->Field($offre);
-        }; ?>
-
-            
-
+              echo   $field->Field($offre);
+        }; 
+        if(isset($_GET['submit'])){
+            $offre= new OffreController;
+            $offre->deleteOffre($_GET['id']);
+        } ?>
         <!-- Pagination -->
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
@@ -276,6 +247,11 @@ use app\Core\OffresField;
     </div>
   </div>
 </div>
+<script>
+    function showUpdateForm($id,$title,$description,$budget,$durre){
+
+    }
+</script>
    
 </body>
 </html>

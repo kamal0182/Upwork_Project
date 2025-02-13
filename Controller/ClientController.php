@@ -10,8 +10,8 @@ class ClientController  extends Controller
     public function  ShowAllMyOffres(){
         $this->client = new ClientModel($_SESSION['user']);
         $offres = new OffreModel;
+        $offres->setClientmodal($this->client);
          return  $this->checkValue($offres->findAll());
     }
-
 }
 ?>

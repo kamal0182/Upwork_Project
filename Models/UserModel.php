@@ -72,12 +72,12 @@ class UserModel extends GeniriqueModel{
     public function create(){
         
           
-            $sql = "INSERT INTO users (firstname,lastname,email, password , photo ,phone)
+            $sql = "INSERT INTO users (firstname,lastname,email, password , photo ,phone ,rating)
              values 
-             ('{$this->firstname}','{$this->lastname}' , '{$this->email}' , '{$this->password}', '{$this->photo}' , '{$this->phone}')" ;
+             ('{$this->firstname}','{$this->lastname}' , '{$this->email}' , '{$this->password}', '{$this->photo}' , '{$this->phone}',0)" ;
             
             $stmt = Database::getConnection()->prepare($sql);
-            $stmt->execute();   
+            $stmt->execute();
             return  Database::getConnection()->lastInsertId();
         return  $stmt->fetchObject(UserModel::class);
     }

@@ -24,8 +24,6 @@ class Database {
                     $host = 'localhost';
                    
                     self::$conn = new PDO("pgsql:host=$host;port=$port;dbname=$db_name", $username, $password);
-                    var_dump( self::$conn) ;
-                  
                     return self::$conn;
                 } catch (PDOException $e) {
                     die("Erreur de connexion : " . $e->getMessage());

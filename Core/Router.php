@@ -22,6 +22,7 @@ class Router {
     public function resolve (){
         $path = $this->request->getPath();
         $method = $this->request->getMethod();
+        
         $callback = $this->routes[$method][$path] ?? false ;
         if($callback == false){
            $this->response->setStatusCode(404);
@@ -39,7 +40,6 @@ class Router {
     }
     public function renderView($View,$params=[])
     {
-        
       $viewcontent = $this->changeContente($View,$params); 
       $layoutcontent = $this->layoutContent();
       return str_replace("{{Content}}",$viewcontent ,$layoutcontent);
@@ -47,7 +47,6 @@ class Router {
     protected function layoutContent()
     {
        $layout =  Application::$app->controller->layout;
-       
         ob_start();
         include_once application::$root_dir."/views/layouts/$layout.php";
        return  ob_get_clean() ;

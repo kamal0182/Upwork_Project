@@ -13,9 +13,7 @@ abstract class GeniriqueModel{
     public function matchclassswithdatabase(){
         $tabalename =  strtolower($this->tablename())."s";
         return $tabalename ;
- 
-     }
-   
+      }
     public function delete($id){
 
     }

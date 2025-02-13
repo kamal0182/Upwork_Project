@@ -39,19 +39,19 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
+        
         $loginmodel = new LoginModel();
         if ($request->isPost()) {
             $loginmodel->loadData($request->getBody());
             if ($loginmodel->validate() && $loginmodel->login()) {
                 $this->user->createInstanceWithEmailAndPassword($loginmodel->email, $loginmodel->password);
-                $this->user->findByEmailAndPassword();
+                // var_dump($this->user->findByEmailAndPassword());
+                
                 $this->user = $this->user->findByEmailAndPassword();
+                var_dump($this->user);
                 $offre = new OffreModel;
                 $_SESSION['user'] = $this->user;
-                return $this->render('Client',[
-                    
-                ]);
-              
+                  return $this->render("Client"); 
             }
         }
         $this->setLayout("Auth");
