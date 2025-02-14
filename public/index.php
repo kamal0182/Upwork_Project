@@ -4,13 +4,16 @@ require_once __DIR__ . "/../vendor/autoload.php";
 // include_once "../Conroller/SiteController.php";
 
 use app\Controller\Aadoui;
+use app\Controller\AdminController;
 use app\Controller\AuthController;
 use app\Controller\CategorieController;
 use app\Controller\ClientController;
 use app\Controller\OffreController;
 use app\Controller\SiteController;
 use app\Controller\TagController;
-use app\Core\application;   
+use app\Core\application;
+use app\Models\OffreModel;
+
 session_start();
 $app = new Application(dirname(__DIR__));
 // $app->router->get('',[SiteController::class,"AdminDashboard"]);
@@ -27,6 +30,8 @@ $app->router->get('/categories',[CategorieController::class,"renderCategories"])
 $app->router->post('/categories',[CategorieController::class,"create"]);
 
 $app->router->get('/Tags',[TagController::class,"showTags"]);
+$app->router->get('/offres',[OffreController::class,"showNonValideOffres"]);
+$app->router->post('/offres',[AdminController::class,"setStatusValue"]);
 // $app->router->get('/Tags',[TagController::class,"create"]);
 $app->router->post('/Tags',[TagController::class,"create"]);
 $app->run();
